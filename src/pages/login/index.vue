@@ -18,7 +18,7 @@
           <div v-if="isPasswordError" class="error-tip">{{ passwordErrorMsg }}</div>
         </div>
         <div class="btn">
-          <button class="login-btn">登 录</button>
+          <button class="login-btn" @click="login">登 录</button>
         </div>
       </div>
     </div>
@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import { userNameExp, passwordExp } from '@/global/regxp'
+import { userNameExp, passwordExp } from '~g/utils/regxp'
 export default {
   data() {
     return {
@@ -62,6 +62,10 @@ export default {
       } else {
         this.isPasswordError = false
       }
+    },
+
+    login() {
+      
     }
   }
 }
@@ -102,7 +106,6 @@ export default {
       .item {
         width: 400px;
         padding-bottom: 25px;
-        margin-bottom: 10px;
         height: 64px;
 
         .content {

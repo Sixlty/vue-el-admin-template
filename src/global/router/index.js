@@ -3,13 +3,24 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-const commonRoutes = [
+export const commonRoutes = [
   {
     path: '/login',
     name: 'login',
-    component: () => import('~/login/views'),
+    component: () => import('~p/login'),
     meta: {
       title: '登录',
+    }
+  }
+]
+
+export const asyncRoutes = [
+  {
+    path: '/404',
+    name: '404',
+    component: () => import('~p/404'),
+    meta: {
+      title: '无法找到该页面',
     }
   }
 ]

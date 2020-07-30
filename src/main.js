@@ -5,9 +5,11 @@ import Less from 'less'
 
 Vue.use(Less)
 
-import './global/app.less'
+import './global/style/index.less'
 import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css';
+import 'element-ui/lib/theme-chalk/index.css'
+import store from './global/store'
+import './permission'
 
 Vue.use(ElementUI)
 
@@ -15,5 +17,6 @@ Vue.config.productionTip = false
 
 new Vue({
   router,
+  store,
   render: h => h(App),
 }).$mount('#app')
