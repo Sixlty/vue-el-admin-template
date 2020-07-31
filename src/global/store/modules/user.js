@@ -1,3 +1,5 @@
+import userApi from '~g/api/user'
+
 export default {
   state: {
     token: '',
@@ -15,9 +17,11 @@ export default {
     }
   },
 
-  action: {
-    login({ commit }, loginForm) {
-
+  actions: {
+    login({ commit }, account) {
+      userApi.login(account).then(res => {
+        console.log(res)
+      })
     }
   }
   
