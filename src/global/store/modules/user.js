@@ -1,4 +1,5 @@
 import userApi from '~g/api/user'
+import { setToken, removeToken } from '../../utils/auth'
 
 export default {
   state: {
@@ -19,8 +20,21 @@ export default {
 
   actions: {
     login({ commit }, account) {
-      userApi.login(account).then(res => {
-        console.log(res)
+      return new Promise((resolve, reject) => {
+        userApi.login(account).then(res => {
+          setToken(res.access_token)
+          commit('Set_Token', res.access_token)
+          resolve()
+        }).catch(error => {
+          reject()
+        })
+      })
+    },
+
+    logout({ commit }, account) {
+      return new Promise(( resolve, reject ) => {
+        removeToken()
+        
       })
     }
   }

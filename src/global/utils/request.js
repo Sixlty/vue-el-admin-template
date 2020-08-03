@@ -3,7 +3,7 @@ import store from '~g/store'
 import { Message } from 'element-ui'
 
 const service = axios.create({
-  baseURL: process.env.VUE_BASE_API,
+  baseURL: process.env.VUE_APP_BASE_API,
   timeout: 15000,
 })
 
@@ -16,8 +16,10 @@ service.interceptors.request.use(
     if(store.getters.token) {
       headers.Authorization = 'Bearer ' + store.getters.token
     } else {
-
+      headers.Authorization = 'Basic YXBpOnNlY3JldA=='
+      headers.basic = 'eyJwZXJtaXNzaW9ucyI6W10sImZsYWciOmZhbHNlLCJ2YWx1ZVR5cGUiOiJOVU1CRVIifQ=='
     }
+    config.headers = {...headers, ...config.headers}
     return config
   },
   error => {
@@ -30,7 +32,8 @@ service.interceptors.response.use(
   response => {
     const res = response.data
 
-    if(res.code === 0) { // 数据返回成功
+    // 自定义逻辑
+    if(res.code === 0 || !res.code) { // 数据返回成功
 
       return res.data || res
     } else {

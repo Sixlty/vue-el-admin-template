@@ -8,6 +8,7 @@ function resolve(dir) {
 
 const port = process.env.port || process.env.npm_config_port || 8087 // dev port
 
+
 module.exports = {
   publicPath: '/', // 公共路径（“/”根路径）
   outputDir: 'dist', // 输出目录

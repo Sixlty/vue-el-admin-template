@@ -41,8 +41,8 @@ export default {
       passwordErrorMsg: '',
 
       form: {
-        userName: '',
-        password: '',
+        userName: 'admin',
+        password: '123456',
       }
     }
   },
@@ -65,7 +65,9 @@ export default {
     },
 
     login() {
-      this.$store.dispatch('user/login', this.form)
+      this.$store.dispatch('user/login', this.form).then(res => {
+        console.log(this.$store.state.user.token)
+      })
     }
   }
 }

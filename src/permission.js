@@ -49,3 +49,7 @@ function hasPermission(route, permissionList) {
     }, false)
   }
 }
+
+function resetRouter() {
+
+}
