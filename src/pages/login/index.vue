@@ -66,7 +66,7 @@ export default {
 
     login() {
       this.$store.dispatch('user/login', this.form).then(res => {
-        console.log(this.$store.state.user.token)
+        this.$router.push({ path: '/dashboard' })
       })
     }
   }

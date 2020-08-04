@@ -1,5 +1,5 @@
 import axios from 'axios'
-import store from '~g/store'
+import { getToken } from '~g/utils/auth'
 import { Message } from 'element-ui'
 
 const service = axios.create({
@@ -12,9 +12,9 @@ service.interceptors.request.use(
     let headers = {
 
     }
-
-    if(store.getters.token) {
-      headers.Authorization = 'Bearer ' + store.getters.token
+    
+    if(getToken()) {
+      headers.Authorization = 'Bearer ' + getToken()
     } else {
       headers.Authorization = 'Basic YXBpOnNlY3JldA=='
       headers.basic = 'eyJwZXJtaXNzaW9ucyI6W10sImZsYWciOmZhbHNlLCJ2YWx1ZVR5cGUiOiJOVU1CRVIifQ=='

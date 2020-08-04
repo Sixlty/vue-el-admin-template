@@ -15,5 +15,12 @@ export default {
         'Content-Type': 'application/x-www-form-urlencoded'
       }
     })
+  },
+
+  getInfo(token) {
+    return request({
+      url: '/common/oauth2/sys-user/info',
+      method: 'get'
+    })
   }
 }

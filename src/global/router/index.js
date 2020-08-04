@@ -11,7 +11,15 @@ export const commonRoutes = [
     meta: {
       title: '登录',
     }
-  }
+  },
+  {
+    path: '/404',
+    name: '404',
+    component: () => import('~p/404'),
+    meta: {
+      title: '无法找到该页面',
+    }
+  },
 ]
 
 // 异步权限路由
@@ -25,21 +33,19 @@ export const asyncRoutes = [
       permissionName: ['首页']
     }
   },
-  {
-    path: '/404',
-    name: '404',
-    component: () => import('~p/404'),
-    meta: {
-      title: '无法找到该页面',
-      permissionName: ['404']
-    }
-  },
-  { path: '*', name: '404', component: () => import('~p/404') }
+  { path: '*', redirect: '/404' }
 ]
 
-const router = new Router({
+const createRouter = () => new Router({
   scrollBehavior: () => ({ y: 0 }),
   routes: commonRoutes // (缩写) 相当于 routes: routes
 })
+
+const router = createRouter()
+
+export function resetRouter() {
+  const newRouter = createRouter()
+  router.matcher = newRouter.matcher
+}
 
 export default router
