@@ -1,15 +1,27 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import Layout from '../Layout'
 
 Vue.use(Router)
 
 export const commonRoutes = [
   {
+    path: '/',
+    name: 'index',
+    component: Layout,
+    meta: {
+      title: 'index',
+      icon: 'el-icon-switch-button'
+    }
+  },
+  {
     path: '/login',
     name: 'login',
+    hidden: true,
     component: () => import('~p/login'),
     meta: {
       title: '登录',
+      icon: 'el-icon-switch-button'
     }
   },
   {
@@ -18,6 +30,7 @@ export const commonRoutes = [
     component: () => import('~p/404'),
     meta: {
       title: '无法找到该页面',
+      icon: 'el-icon-switch-button'
     }
   },
 ]
@@ -30,6 +43,7 @@ export const asyncRoutes = [
     component: () => import('~p/dashboard'),
     meta: {
       title: '首页',
+      icon: 'el-icon-switch-button',
       permissionName: ['首页']
     }
   },
