@@ -1,15 +1,18 @@
 <template>
   <div>
-    <el-menu-item v-for="route in routes.filter(val => !val.hidden && (val.meta && val.meta.title))" :key="route.path">
-      <Item v-if="!routes.children" :icon="route.meta && route.meta.icon" :title="route.meta && route.meta.title" />
+    <div v-for="route in routes.filter(val => !val.hidden && (val.meta && val.meta.title))" :key="route.path">
+      <el-menu-item :index="route.path" v-if="!route.children" @click="toRoute(route.path)" >
+        <Item :icon="route.meta && route.meta.icon" :title="route.meta && route.meta.title" />
+      </el-menu-item>
 
-      <el-submenu v-else>
+      <el-submenu :index="route.path" v-else>
         <template slot="title">
-          <Item v-if="!routes.children" :icon="route.meta && route.meta.icon" :title="route.meta && route.meta.title" />
+          <Item :icon="route.meta && route.meta.icon" :title="route.meta && route.meta.title" />
         </template>
-        <SideItem :routes="routes.children" />
+        <SideItem :routes="route.children" :base-path="route.path"/>
       </el-submenu>
-    </el-menu-item>
+    </div>
+    
 
     <!-- <el-submenu index="1">
       <template slot="title">
@@ -41,27 +44,49 @@ export default {
     routes: {
       type: Array,
       default: () => []
+    },
+    basePath: {
+      type: String,
+    }
+  },
+  methods: {
+    toRoute(path) {
+      let toRoute = ''
+      if(!this.basePath) {
+        toRoute = path
+      } else {
+        toRoute = this.basePath + path
+      }
+      if(this.$route.path == toRoute) { return  }
+      this.$router.push(toRoute)
     }
   }
 }
 </script>
 
 <style lang="less" scoped>
-.el-submenu__title i, .el-menu-item i{
-  color: rgb(241, 238, 238);
-}
-
-.is-active {
-  background-color:rgb(29, 94, 124)!important;
-  /deep/ .el-menu-item {
-    background-color:rgb(29, 94, 124)!important;
-  }
-  /deep/ .el-menu-item:hover {
-    background-color: rgb(19, 60, 80)!important;
+.el-menu-item {
+  i, span {
+    color: #fff
   }
 }
-
-/deep/ .el-submenu__title:hover {
-  background-color: inherit;
+.el-submenu__title {
+  i, span {
+    color: #fff
+  }
+}
+.el-submenu {
+  .el-menu-item {
+    background-color: rgb(33, 103, 136)!important;
+  }
+  .el-menu-item:hover {
+    background-color: rgb(19, 60, 80)!important
+  }
+}
+.el-menu-item.is-active {
+  background-color: rgb(37, 117, 154)!important;
+  i,span {
+    color: #409EFF
+  }
 }
 </style>

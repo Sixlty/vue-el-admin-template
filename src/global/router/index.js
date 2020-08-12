@@ -31,7 +31,18 @@ export const commonRoutes = [
     meta: {
       title: '无法找到该页面',
       icon: 'el-icon-switch-button'
-    }
+    },
+    children: [
+      {
+        path: '/101',
+        name: '101',
+        component: () => import('~p/404'),
+        meta: {
+          title: '324',
+          icon: 'el-icon-switch-button'
+        },
+      }
+    ]
   },
 ]
 

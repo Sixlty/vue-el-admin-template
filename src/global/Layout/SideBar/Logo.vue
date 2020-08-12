@@ -13,12 +13,12 @@
 
 <style lang="less" scoped>
 .el-menu-item:hover {
-  background-color: inherit;
+  background-color: #19536e;
   cursor: auto;
 }
 .el-menu-item {
   text-align: center;
-  background-color:  rgb(36, 118, 156);
+  background-color:  #19536e;
   padding: 0;
 }
 .logo {

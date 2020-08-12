@@ -3,7 +3,7 @@
     <Logo />
     <el-scrollbar wrap-class="scrollbar-wrapper">
       <el-menu class="sideBar-menu" @open="handleOpen" @close="handleClose" :collapse="isCollapse" background-color="#3092C0">
-        <SideItem :routes="$router.options.routes"/>
+        <SideItem :routes="$router.options.routes" />
       </el-menu>
     </el-scrollbar>
   </div>
@@ -32,9 +32,6 @@ export default {
 
   .scrollbar-wrapper {
     overflow-x: hidden;
-  }
-  .el-menu-item:hover {
-    background-color: inherit;
   }
 
   .sideBar-menu {
