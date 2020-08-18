@@ -1,5 +1,5 @@
 <template>
-  <div class="sideBar-wrapper">
+  <div @click="isCollapse = !isCollapse" class="sideBar-wrapper">
     <Logo />
     <el-scrollbar wrap-class="scrollbar-wrapper">
       <el-menu class="sideBar-menu" @open="handleOpen" @close="handleClose" :collapse="isCollapse" background-color="#3092C0">
@@ -17,6 +17,11 @@ export default {
   components: {
     Logo,
     SideItem
+  },
+  data() {
+    return {
+      isCollapse: false
+    }
   }
 }
 </script>
@@ -28,7 +33,7 @@ export default {
   position: relative;
   height: 100vh;
   background-color: @theme-color;
-  width: 240px;
+  max-width: 240px;
 
   .scrollbar-wrapper {
     overflow-x: hidden;
