@@ -1,5 +1,5 @@
 <template>
-  <div @click="isCollapse = !isCollapse" class="sideBar-wrapper">
+  <div class="sideBar-wrapper">
     <Logo />
     <el-scrollbar wrap-class="scrollbar-wrapper">
       <el-menu class="sideBar-menu" @open="handleOpen" @close="handleClose" :collapse="isCollapse" background-color="#3092C0">

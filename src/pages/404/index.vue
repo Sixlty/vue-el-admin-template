@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="height: 1999px;">
     404
   </div>
 </template>

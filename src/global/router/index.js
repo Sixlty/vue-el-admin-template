@@ -27,14 +27,14 @@ export const commonRoutes = [
   {
     path: '/404',
     name: '404',
-    component: () => import('~p/404'),
+    component: Layout,
     meta: {
       title: '无法找到该页面',
       icon: 'el-icon-switch-button'
     },
     children: [
       {
-        path: '/101',
+        path: '101',
         name: '101',
         component: () => import('~p/404'),
         meta: {
@@ -51,7 +51,7 @@ export const asyncRoutes = [
   {
     path: '/dashboard',
     name: 'dashboard',
-    component: () => import('~p/dashboard'),
+    component: Layout,
     meta: {
       title: '首页',
       icon: 'el-icon-switch-button',
