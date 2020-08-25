@@ -1,7 +1,7 @@
 <template>
   <el-scrollbar wrap-class="scrollbar-wrapper">
     <div class="app-main">
-      <router-view ></router-view>
+      <router-view></router-view>
     </div>
   </el-scrollbar>
 </template>
